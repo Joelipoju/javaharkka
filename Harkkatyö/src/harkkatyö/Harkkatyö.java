@@ -3,6 +3,7 @@ package harkkatyö;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -15,7 +16,7 @@ public class Harkkatyö {
 		int kokonaispisteet = 0;
 		String input = "";
 		System.out.println(
-				"Tervetuloa tietovisailuun! \nVisa pitää sisällään X osiota, jotka voit suorittaa haluamassasi jarjestyksessa.");
+				"Tervetuloa tietovisailuun! \nVisa pitää sisällään 3 osaa, jotka voit suorittaa haluamassasi jarjestyksessa.");
 		do {
 			System.out.println("Aloitetaanko, K/E?");
 			input = esko.nextLine();
@@ -34,7 +35,7 @@ public class Harkkatyö {
 
 	public static int aloitusmetodi(Scanner esko) throws FileNotFoundException {
 		int pisteet = 0;
-		Boolean[] metodiValinnat = { false, false, false, false, false };
+		Boolean[] metodiValinnat = { false, false, false,};
 		boolean kaikkiSuoritettu = false;
 		while (!kaikkiSuoritettu) {
 			System.out.println(
@@ -50,22 +51,19 @@ public class Harkkatyö {
 					switch (valinta) {
 					case 1:
 						pisteet += maanTieto(esko);
-						esko.nextLine();
 						break;
 					case 2:
 						pisteet += mateMatiikka(esko);
-						esko.nextLine();
 						break;
 					case 3:
 						pisteet += suomenKieli(esko);
-						esko.nextLine();
 						break;
 					}
 					if (Arrays.stream(metodiValinnat).allMatch(valittu -> valittu)) {
 						kaikkiSuoritettu = true;
 					}
 				} else {
-					System.out.println("Olet jo suorittanut aihealueen. Valitse jokin toinen alue.");
+					System.out.println("Olet jo suorittanut aihealueen. Valitse jokin toinen aihe.");
 				}
 			} else {
 				System.out.println("Valitseppa uudestaan.");
@@ -74,10 +72,60 @@ public class Harkkatyö {
 		return pisteet;
 	}
 
-	public static int suomenKieli() {
-		return 0;
-		// TODO Auto-generated method stub
-
+	public static int suomenKieli(Scanner esko) {
+	    int pisteet = 0;
+	    String rivi = "";
+	    File filu = new File("loru.txt");
+	    try {
+	        BufferedReader lukija = new BufferedReader(new FileReader(filu));
+	        while ((rivi = lukija.readLine()) != null) {
+	            System.out.println(rivi);
+	        }
+	    } catch (IOException e) {
+	        System.out.println("Virhe tiedostoa luettaessa " + e.getMessage());
+	    }
+	    System.out.println("Miten Pablo saapui paikalle??");
+	    String vastaus1 = esko.nextLine();
+	    if (vastaus1.equalsIgnoreCase("hyppien")) {
+	        System.out.println("Oikein meni! Hienoa!");
+	        pisteet++;
+	    } else {
+	        System.out.println("Väärin meni :(");
+	    }
+	    System.out.println("Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa");
+	    String vastaus2 = esko.nextLine();
+	    if (vastaus2.equalsIgnoreCase("aamurusko")) {
+	        System.out.println("Oikein meni! Hienoa");
+	        pisteet++;
+	    } else {
+	        System.out.println("Väärin meni :(");
+	    }
+	    System.out.println("Kuka söi ankanpoikasen?");
+	    String vastaus3 = esko.nextLine();
+	    if (vastaus3.equalsIgnoreCase("Pablo Pallopää")) {
+	        System.out.println("Oikein meni! Hienoa!");
+	        pisteet++;
+	    } else {
+	        System.out.println("Väärin meni :(");
+	    }
+	    System.out.println("Oliko Pablolla nälkä?");
+	    String vastaus4 = esko.nextLine();
+	    if (vastaus4.equalsIgnoreCase("Oli")) {
+	        System.out.println("Oikein meni! Hienoa!");
+	        pisteet++;
+	    } else {
+	        System.out.println("Väärin meni :(");
+	    }
+	    System.out.println("Mikä ankalla jäi juomatta?");
+	    String vastaus5 = esko.nextLine();
+	    if (vastaus5.equalsIgnoreCase("Aamukahvi")) {
+	        System.out.println("Oikein meni! Hienoa!");
+	        pisteet++;
+	    } else {
+	        System.out.println("Väärin meni :(");
+	    }
+	    System.out.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + " pistettä. Poistutaan osiosta");
+	    return pisteet;
 	}
 
 	public static int mateMatiikka(Scanner esko) {
@@ -123,12 +171,13 @@ public class Harkkatyö {
 		esko.nextLine();
 		if (vastaus4 == numerot.length) {
 			System.out.println(
-					"Oikein meni! Matematiikkaosio on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun!");
+					"Oikein meni! ");
 			pisteet++;
 		} else {
 			System.out.println(
 					"Väärin meni :( Matematiikkaosa on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun");
 		}
+		System.out.println("Matematiikkaosio on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun!");
 		return pisteet;
 
 	}
