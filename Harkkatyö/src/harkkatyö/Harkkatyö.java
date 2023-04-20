@@ -33,6 +33,27 @@ public class Harkkatyö {
 		} while (!input.equalsIgnoreCase("k") && !input.equalsIgnoreCase("e"));
 		System.out.println(
 				"Visa on nyt päättynyt. Kokonaispistemääräsi on " + kokonaispisteet + "/15. Oikein aurinkoista kesää!");
+		System.out.println("Haluatko antaa palautetta? K/E");
+		String input2 = esko.nextLine();
+		if (input2.equalsIgnoreCase("k")) {
+			palauteBoksi(esko);
+		} else {
+			System.out.println("Kiitos ajastasi!");
+		}
+
+	}
+
+	public static void palauteBoksi(Scanner esko) {
+		try {
+			FileWriter kirjoittaja = new FileWriter("palaute.txt");
+			System.out.println("Anna palautetta!");
+			String palaute = esko.nextLine();
+			kirjoittaja.write(palaute);
+			kirjoittaja.close();
+			System.out.println("Palaute on rekisteröity onnistuneesti.");
+		} catch (IOException e) {
+			System.out.println("Virhe tiedostoa luodessa: " + e.getMessage());
+		}
 	}
 
 	public static int aloitusmetodi(Scanner esko) throws FileNotFoundException {
@@ -86,7 +107,7 @@ public class Harkkatyö {
 		} catch (IOException e) {
 			System.out.println("Virhe tiedostoa luettaessa" + e.getMessage());
 		}
-		System.out.println("Miten Pablo saapui paikalle??");
+		System.out.println("Miten Pablo saapui paikalle?");
 		String vastaus1 = esko.nextLine();
 		if (vastaus1.equalsIgnoreCase("hyppien")) {
 			System.out.println("Oikein meni! Hienoa!");
@@ -94,7 +115,7 @@ public class Harkkatyö {
 		} else {
 			System.out.println("Väärin meni :(");
 		}
-		System.out.println("Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa");
+		System.out.println("Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa\n(Huom. Oikea vastaus on vain yksi sana!");
 		String vastaus2 = esko.nextLine();
 		if (vastaus2.equalsIgnoreCase("aamurusko")) {
 			System.out.println("Oikein meni! Hienoa");
@@ -102,7 +123,7 @@ public class Harkkatyö {
 		} else {
 			System.out.println("Väärin meni :(");
 		}
-		System.out.println("Kuka söi ankanpoikasen?");
+		System.out.println("Kuka söi ankanpoikasen? (Koko nimi)");
 		String vastaus3 = esko.nextLine();
 		if (vastaus3.equalsIgnoreCase("Pablo Pallopää")) {
 			System.out.println("Oikein meni! Hienoa!");
@@ -126,7 +147,8 @@ public class Harkkatyö {
 		} else {
 			System.out.println("Väärin meni :(");
 		}
-		System.out.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 pistettä. Poistutaan osiosta");
+		System.out
+				.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 pistettä. Poistutaan osiosta");
 		return pisteet;
 	}
 
