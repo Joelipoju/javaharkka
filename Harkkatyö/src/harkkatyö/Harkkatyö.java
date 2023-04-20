@@ -147,8 +147,7 @@ public class Harkkatyö {
 		} else {
 			System.out.println("Väärin meni :(");
 		}
-		System.out
-				.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 pistettä. Poistutaan osiosta");
+		System.out.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 pistettä. Poistutaan osiosta");
 		return pisteet;
 	}
 
