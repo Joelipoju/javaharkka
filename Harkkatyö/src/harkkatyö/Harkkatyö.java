@@ -2,6 +2,8 @@ package harkkatyö;
 
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Random;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,12 +32,12 @@ public class Harkkatyö {
 			}
 		} while (!input.equalsIgnoreCase("k") && !input.equalsIgnoreCase("e"));
 		System.out.println(
-				"Visa on nyt päättynyt. Kokonaispistemääräsi on " + kokonaispisteet + ". Oikein aurinkoista kesää!");
+				"Visa on nyt päättynyt. Kokonaispistemääräsi on " + kokonaispisteet + "/15. Oikein aurinkoista kesää!");
 	}
 
 	public static int aloitusmetodi(Scanner esko) throws FileNotFoundException {
 		int pisteet = 0;
-		Boolean[] metodiValinnat = { false, false, false,};
+		Boolean[] metodiValinnat = { false, false, false, };
 		boolean kaikkiSuoritettu = false;
 		while (!kaikkiSuoritettu) {
 			System.out.println(
@@ -45,7 +47,7 @@ public class Harkkatyö {
 				return pisteet;
 			}
 			int valinta = Integer.parseInt(valintaStr);
-			if (valinta >= 1 && valinta <= 5) {
+			if (valinta >= 1 && valinta <= 3) {
 				if (!metodiValinnat[valinta - 1]) {
 					metodiValinnat[valinta - 1] = true;
 					switch (valinta) {
@@ -73,111 +75,139 @@ public class Harkkatyö {
 	}
 
 	public static int suomenKieli(Scanner esko) {
-	    int pisteet = 0;
-	    String rivi = "";
-	    File filu = new File("loru.txt");
-	    try {
-	        BufferedReader lukija = new BufferedReader(new FileReader(filu));
-	        while ((rivi = lukija.readLine()) != null) {
-	            System.out.println(rivi);
-	        }
-	    } catch (IOException e) {
-	        System.out.println("Virhe tiedostoa luettaessa " + e.getMessage());
-	    }
-	    System.out.println("Miten Pablo saapui paikalle??");
-	    String vastaus1 = esko.nextLine();
-	    if (vastaus1.equalsIgnoreCase("hyppien")) {
-	        System.out.println("Oikein meni! Hienoa!");
-	        pisteet++;
-	    } else {
-	        System.out.println("Väärin meni :(");
-	    }
-	    System.out.println("Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa");
-	    String vastaus2 = esko.nextLine();
-	    if (vastaus2.equalsIgnoreCase("aamurusko")) {
-	        System.out.println("Oikein meni! Hienoa");
-	        pisteet++;
-	    } else {
-	        System.out.println("Väärin meni :(");
-	    }
-	    System.out.println("Kuka söi ankanpoikasen?");
-	    String vastaus3 = esko.nextLine();
-	    if (vastaus3.equalsIgnoreCase("Pablo Pallopää")) {
-	        System.out.println("Oikein meni! Hienoa!");
-	        pisteet++;
-	    } else {
-	        System.out.println("Väärin meni :(");
-	    }
-	    System.out.println("Oliko Pablolla nälkä?");
-	    String vastaus4 = esko.nextLine();
-	    if (vastaus4.equalsIgnoreCase("Oli")) {
-	        System.out.println("Oikein meni! Hienoa!");
-	        pisteet++;
-	    } else {
-	        System.out.println("Väärin meni :(");
-	    }
-	    System.out.println("Mikä ankalla jäi juomatta?");
-	    String vastaus5 = esko.nextLine();
-	    if (vastaus5.equalsIgnoreCase("Aamukahvi")) {
-	        System.out.println("Oikein meni! Hienoa!");
-	        pisteet++;
-	    } else {
-	        System.out.println("Väärin meni :(");
-	    }
-	    System.out.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 oikein. Poistutaan osiosta");
-	    return pisteet;
+		int pisteet = 0;
+		String rivi = "";
+		File filu = new File("loru.txt");
+		try {
+			BufferedReader lukija = new BufferedReader(new FileReader(filu));
+			while ((rivi = lukija.readLine()) != null) {
+				System.out.println(rivi);
+			}
+		} catch (IOException e) {
+			System.out.println("Virhe tiedostoa luettaessa" + e.getMessage());
+		}
+		System.out.println("Miten Pablo saapui paikalle??");
+		String vastaus1 = esko.nextLine();
+		if (vastaus1.equalsIgnoreCase("hyppien")) {
+			System.out.println("Oikein meni! Hienoa!");
+			pisteet++;
+		} else {
+			System.out.println("Väärin meni :(");
+		}
+		System.out.println("Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa");
+		String vastaus2 = esko.nextLine();
+		if (vastaus2.equalsIgnoreCase("aamurusko")) {
+			System.out.println("Oikein meni! Hienoa");
+			pisteet++;
+		} else {
+			System.out.println("Väärin meni :(");
+		}
+		System.out.println("Kuka söi ankanpoikasen?");
+		String vastaus3 = esko.nextLine();
+		if (vastaus3.equalsIgnoreCase("Pablo Pallopää")) {
+			System.out.println("Oikein meni! Hienoa!");
+			pisteet++;
+		} else {
+			System.out.println("Väärin meni :(");
+		}
+		System.out.println("Oliko Pablolla nälkä?");
+		String vastaus4 = esko.nextLine();
+		if (vastaus4.equalsIgnoreCase("Oli")) {
+			System.out.println("Oikein meni! Hienoa!");
+			pisteet++;
+		} else {
+			System.out.println("Väärin meni :(");
+		}
+		System.out.println("Mikä ankalla jäi juomatta?");
+		String vastaus5 = esko.nextLine();
+		if (vastaus5.equalsIgnoreCase("Aamukahvi")) {
+			System.out.println("Oikein meni! Hienoa!");
+			pisteet++;
+		} else {
+			System.out.println("Väärin meni :(");
+		}
+		System.out.println("Visan aidinkieliosa on nyt ohi! Sait osiosta " + pisteet + "/5 pistettä. Poistutaan osiosta");
+		return pisteet;
 	}
 
 	public static int mateMatiikka(Scanner esko) {
 		int pisteet = 0;
 		System.out.println(
-				"Tervetuloa testin matematiikka-osioon.\nOsio sisältää viisi yksinkertaista laskutoimitusta. Laskuissa käsitellään samoja lukuja");
-		int[] numerot = { 12, 23, 5, 6, 9 };
+				"Tervetuloa testin matematiikka-osioon.\nOsio sisältää viisi yksinkertaista laskutoimitusta. Laskuissa käsitellään samoja lukuja.\nHUOM: desimaalin erotukseen käytetään pilkkua, ei pistettä");
+		int[] numerot = new int[5];
+		Random random = new Random();
+		for (int i = 0; i < numerot.length; i++) {
+			numerot[i] = random.nextInt(25) + 1;
+		}
 		System.out.println("Luvut, joilla pelaillaan: " + Arrays.toString(numerot));
-		System.out.println("Kuinka paljon on lukujen" + Arrays.toString(numerot) + " summa?");
-		int vastaus = esko.nextInt();
-		if (vastaus == Arrays.stream(numerot).sum()) {
-			System.out.println("Oikein meni! Hienoa!");
-			pisteet++;
-		} else {
-			System.out.println("Väärin meni :(");
+		try {
+			System.out.println("Kuinka paljon on lukujen" + Arrays.toString(numerot) + " summa?");
+			double vastaus = esko.nextDouble();
+			if (vastaus == Arrays.stream(numerot).sum()) {
+				System.out.println("Oikein meni! Hienoa!");
+				pisteet++;
+			} else {
+				System.out.println("Väärin meni :(");
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Syötä vain numeroita!");
+			esko.nextLine();
 		}
-		System.out.println("Mikä on luvuista " + Arrays.toString(numerot) + " suurin?");
-		int vastaus1 = esko.nextInt();
-		if (vastaus1 == Arrays.stream(numerot).max().getAsInt()) {
-			System.out.println("Oikein meni! Hienoa!");
-			pisteet++;
-		} else {
-			System.out.println("Väärin meni :(");
+		try {
+			System.out.println("Mikä on luvuista " + Arrays.toString(numerot) + " suurin?");
+			double vastaus1 = esko.nextDouble();
+			if (vastaus1 == Arrays.stream(numerot).max().getAsInt()) {
+				System.out.println("Oikein meni! Hienoa!");
+				pisteet++;
+			} else {
+				System.out.println("Väärin meni :(");
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Syötä vain numeroita!");
+			esko.nextLine();
 		}
-		System.out.println("Mikä on lukujen " + Arrays.toString(numerot) + " keskiarvo?");
-		int vastaus2 = esko.nextInt();
-		if (vastaus2 == Arrays.stream(numerot).average().orElse(Double.NaN)) {
-			System.out.println("Oikein meni! Hienoa!");
-			pisteet++;
-		} else {
-			System.out.println("Väärin meni! :(");
+		try {
+			System.out.println("Mikä on lukujen " + Arrays.toString(numerot) + " keskiarvo?");
+			double vastaus2 = esko.nextDouble();
+			if (vastaus2 == Arrays.stream(numerot).average().orElse(Double.NaN)) {
+				System.out.println("Oikein meni! Hienoa!");
+				pisteet++;
+			} else {
+				System.out.println("Väärin meni! :(");
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Syötä vain numeroita!");
+			esko.nextLine();
 		}
-		System.out.println("Kuinka paljon on lukujen " + numerot[1] + " ja " + numerot[4] + " tulo?");
-		int vastaus3 = esko.nextInt();
-		if (vastaus3 == numerot[1] * numerot[4]) {
-			System.out.println("Oikein meni! Hienoa!");
-			pisteet++;
-		} else {
-			System.out.println("Väärin meni :(");
+		try {
+			System.out.println("Kuinka paljon on lukujen " + numerot[1] + " ja " + numerot[4] + " tulo?");
+			double vastaus3 = esko.nextDouble();
+			if (vastaus3 == numerot[1] * numerot[4]) {
+				System.out.println("Oikein meni! Hienoa!");
+				pisteet++;
+			} else {
+				System.out.println("Väärin meni :(");
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Syötä vain numeroita!");
+			esko.nextLine();
 		}
-		System.out.println("Viimeinen kysymys! Montako lukua on listalla? " + Arrays.toString(numerot));
-		int vastaus4 = esko.nextInt();
-		esko.nextLine();
-		if (vastaus4 == numerot.length) {
-			System.out.println(
-					"Oikein meni! ");
-			pisteet++;
-		} else {
-			System.out.println(
-					"Väärin meni :( Matematiikkaosa on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun");
+		try {
+			System.out.println("Viimeinen kysymys! Montako lukua on listalla? " + Arrays.toString(numerot));
+			double vastaus4 = esko.nextDouble();
+			esko.nextLine();
+			if (vastaus4 == numerot.length) {
+				System.out.println("Oikein meni! ");
+				pisteet++;
+			} else {
+				System.out.println(
+						"Väärin meni :( Matematiikkaosa on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun");
+			}
+		} catch (InputMismatchException e) {
+			System.out.println("Syötä vain numeroita!");
 		}
 		System.out.println("Matematiikkaosio on nyt ohi. Sait " + pisteet + "/5 oikein. Palataan alkuun!");
+
 		return pisteet;
 
 	}
