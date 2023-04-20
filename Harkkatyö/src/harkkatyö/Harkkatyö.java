@@ -48,7 +48,7 @@ public class Harkkatyö {
 				"Tervetuloa tietovisailuun! \nVisa pitää sisällään 3 osaa, jotka voit suorittaa haluamassasi jarjestyksessa.");
 		do {
 			System.out.println("Aloitetaanko, K/E?");
-			input = esko.nextLine();
+			input = esko.nextLine().trim();
 			if (input.equalsIgnoreCase("k")) {
 				kokonaispisteet = +aloitusmetodi(esko);
 			} else if (input.equalsIgnoreCase("e")) {
@@ -61,7 +61,7 @@ public class Harkkatyö {
 		System.out.println(
 				"Visa on nyt päättynyt. Kokonaispistemääräsi on " + kokonaispisteet + "/15. Oikein aurinkoista kesää!");
 		System.out.println("Haluatko antaa palautetta? K/E");
-		String input2 = esko.nextLine();
+		String input2 = esko.nextLine().trim();
 		if (input2.equalsIgnoreCase("k")) {
 			palauteBoksi(esko);
 		} else {
@@ -166,7 +166,7 @@ public class Harkkatyö {
 			System.out.println("Virhe tiedostoa luettaessa" + e.getMessage());
 		}
 		System.out.println("Miten Pablo saapui paikalle?");
-		String vastaus1 = esko.nextLine();
+		String vastaus1 = esko.nextLine().trim();
 		if (vastaus1.equalsIgnoreCase("hyppien")) {
 			System.out.println("Oikein meni! Hienoa!");
 			pisteet++;
@@ -175,7 +175,7 @@ public class Harkkatyö {
 		}
 		System.out.println(
 				"Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa\n(Huom. Oikea vastaus on vain yksi sana!");
-		String vastaus2 = esko.nextLine();
+		String vastaus2 = esko.nextLine().trim();
 		if (vastaus2.equalsIgnoreCase("aamurusko")) {
 			System.out.println("Oikein meni! Hienoa");
 			pisteet++;
@@ -183,7 +183,7 @@ public class Harkkatyö {
 			System.out.println("Väärin meni :(");
 		}
 		System.out.println("Kuka söi ankanpoikasen? (Koko nimi)");
-		String vastaus3 = esko.nextLine();
+		String vastaus3 = esko.nextLine().trim();
 		if (vastaus3.equalsIgnoreCase("Pablo Pallopää")) {
 			System.out.println("Oikein meni! Hienoa!");
 			pisteet++;
@@ -191,7 +191,7 @@ public class Harkkatyö {
 			System.out.println("Väärin meni :(");
 		}
 		System.out.println("Oliko Pablolla nälkä?");
-		String vastaus4 = esko.nextLine();
+		String vastaus4 = esko.nextLine().trim();
 		if (vastaus4.equalsIgnoreCase("Oli")) {
 			System.out.println("Oikein meni! Hienoa!");
 			pisteet++;
@@ -199,7 +199,7 @@ public class Harkkatyö {
 			System.out.println("Väärin meni :(");
 		}
 		System.out.println("Mikä ankalla jäi juomatta?");
-		String vastaus5 = esko.nextLine();
+		String vastaus5 = esko.nextLine().trim();
 		if (vastaus5.equalsIgnoreCase("Aamukahvi")) {
 			System.out.println("Oikein meni! Hienoa!");
 			pisteet++;
