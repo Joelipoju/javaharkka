@@ -45,7 +45,7 @@ public class Harkkatyö {
 		int kokonaispisteet = 0;
 		String input = "";
 		System.out.println(
-				"Tervetuloa tietovisailuun! \nVisa pitää sisällään 3 osaa, jotka voit suorittaa haluamassasi jarjestyksessa.");
+				"Tervetuloa tietovisailuun! \nVisa pitää sisällään 3 osaa, jotka voit suorittaa haluamassasi jarjestyksessa.\nVisa pelataan IDE:n konsolissa näppäimistöä käyttämällä.");
 		do {
 			System.out.println("Aloitetaanko, K/E?");
 			input = esko.nextLine().trim();
@@ -154,6 +154,7 @@ public class Harkkatyö {
 	 * @return Käyttäjän osiosta keräämät pisteet
 	 */
 	public static int suomenKieli(Scanner esko) {
+		System.out.println("Tervetuloa visan äidinkieli-osioon. Sinulta kysytään viisi kysymystä lorusta,\njoka tulostetaan näytölle. Vastaathan vain kirjaimin.");
 		int pisteet = 0;
 		String rivi = "";
 		File filu = new File("loru.txt");
@@ -174,7 +175,7 @@ public class Harkkatyö {
 			System.out.println("Väärin meni :(");
 		}
 		System.out.println(
-				"Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa\n(Huom. Oikea vastaus on vain yksi sana!");
+				"Mihin aikaan loru tapahtuu? Syötä sana perusmuodossa\n(Huom. Oikea vastaus on vain yksi sana!)");
 		String vastaus2 = esko.nextLine().trim();
 		if (vastaus2.equalsIgnoreCase("aamurusko")) {
 			System.out.println("Oikein meni! Hienoa");
@@ -312,6 +313,7 @@ public class Harkkatyö {
 	 * @throws FileNotFoundException mikäli ohjelman vaatimaa tiedostoa ei löydetä.
 	 */
 	public static int maanTieto(Scanner esko) throws FileNotFoundException {
+		System.out.println("Tervetuloa visan maantieto-osaan.\nTässä osassa sinulta kysytään maita, ja niiden pääkaupunkeja.");
 		int määrä = 5;
 		String tiedostonimi = "maat.txt";
 
